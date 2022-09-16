@@ -1,20 +1,23 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React from "react"
+import { View, Text, Image, StyleSheet } from "react-native";
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
+const App = () => {
+  return(
+     <View style={styles.container}>
+      <Image source={require('./assets/add.png')} />
+      <Text>Some title</Text>
+      <Text>
+      One common pattern is to make your component accept a style prop which in turn is used to style subcomponents. You can use this to make styles "cascade" the way they do in CSS.
+      There are a lot more ways to customize the text style. Check out the Text component reference for a complete list.
+      </Text>
+     </View>
+  )
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+  container:{
+    marginTop:50,
+    backgroundColor: 'red'
+  }
+})
+export default App;
