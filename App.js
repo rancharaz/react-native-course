@@ -1,42 +1,57 @@
 import React from "react"
 import { View, Text, Image, StyleSheet } from "react-native";
+import { FlatList } from "react-native";
+
+const contacts = [
+  {name: 'John Travolta', contact: '123456'},
+  {name: 'David Beckham', contact: '458778'},
+  {name: 'Joe Biden', contact: '778988'},
+  {name: 'Barak Obama', contact: '977885'},
+  {name: 'Chuck Norris', contact: '753367'},
+  {name: 'Abhinav Jukhoop', contact: '753367'},
+  {name: 'Abhinav Jukhoop', contact: '753367'},
+  {name: 'Abhinav Jukhoop', contact: '753367'},
+  {name: 'Abhinav Jukhoop', contact: '753367'},
+  {name: 'Abhinav Jukhoop', contact: '753367'},
+  {name: 'Abhinav Jukhoop', contact: '753367'}
+
+]
 
 const App = () => {
   return(
-     <View style={styles.container}>
-      <Image source={require('./assets/add.png')} style={styles.image} />
-      <Text style={styles.title}>Some title</Text>
-      <Text style={styles.content}>
-      One common pattern is to make your component accept a style prop which in turn is used to style subcomponents. You can use this to make styles "cascade" the way they do in CSS.
-      There are a lot more ways to customize the text style. Check out the Text component reference for a complete list.
-      </Text>
-     </View>
+ <View style={styles.container}> 
+    <FlatList 
+    showsVerticalScrollIndicator={false}
+      vertical
+      data={contacts}
+      keyExtractor={contact => contact.name}
+      renderItem={({item}) => {
+        return(
+         <View style={styles.contactContainer}>
+          <Text style={styles.text}>{item.name}</Text>
+          <Text style={styles.text}>{item.contact}</Text>
+         </View>
+        )
+      }}
+    />
+    </View>
   )
+  
 }
 
 const styles = StyleSheet.create({
-  container:{
-    marginTop:50,
-    backgroundColor: 'red',
-    marginHorizontal: 10,
-    borderWidth: 5,
-    borderColor: 'black',
-    padding: 10
+  container : {
+    marginTop: 40,
   },
-  image: {
-    width: '100%',
-    height: 300
+  contactContainer :{
+    marginBottom: 10,
+    padding: 5,
+    borderColor:'black',
+    borderWidth: 2
   },
-  title:{
-    fontSize: 50,
-    color: '#fff',
-    fontWeight: 'bold',
-    padding: 5
-  },
-  content: {
-      fontSize: 16,
-      color: '#fff',
-      padding: 5
+  text :{
+    fontSize: 18
   }
+     
 })
 export default App; 
